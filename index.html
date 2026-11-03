@@ -1075,7 +1075,18 @@
         function openModal(vimeoId) {
             if (currentVimeoId === vimeoId && modal.classList.contains('open')) return;
             currentVimeoId = vimeoId;
-            iframe.src = `https://player.vimeo.com/video/${vimeoId}?autoplay=1&title=0&byline=0&portrait=0`;
+            // Hashes refresh periodically from Vimeo — updated Nov 2026
+            const hashes = {
+                '1242974568': 'e5c946c792',
+                '1009328137': 'd60497e27a',
+                '1009326032': '537805459b',
+                '1242962369': 'c9703ba0a1'
+            };
+            const hash = hashes[vimeoId] || '';
+            const src = hash
+                ? `https://player.vimeo.com/video/${vimeoId}?h=${hash}&autoplay=1&title=0&byline=0&portrait=0`
+                : `https://player.vimeo.com/video/${vimeoId}?autoplay=1&title=0&byline=0&portrait=0`;
+            iframe.src = src;
             modal.classList.add('open');
             document.body.style.overflow = 'hidden';
         }
