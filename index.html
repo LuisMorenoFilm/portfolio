@@ -832,7 +832,27 @@
                 </div>
             </div>
 
-            <a href="#" class="project-card fade-in stagger-1">
+            <div class="project-card video-card fade-in stagger-1" data-youtube="XhQRZ1ChBoE" tabindex="0" role="button" aria-label="Ver Iria alumna de CEES">
+                <img src="https://i.ytimg.com/vi/XhQRZ1ChBoE/maxresdefault.jpg"
+                     alt="Iria alumna de CEES" loading="lazy">
+                <div class="overlay">
+                    <span class="project-title">Iria — CEES</span>
+                    <span class="project-category">Testimonial</span>
+                    <span class="play-icon">▶</span>
+                </div>
+            </div>
+
+            <div class="project-card video-card fade-in stagger-2" data-youtube="S2F7Egrnv8U" tabindex="0" role="button" aria-label="Ver Elena profesora de CEES">
+                <img src="https://i.ytimg.com/vi/S2F7Egrnv8U/maxresdefault.jpg"
+                     alt="Elena profesora de CEES" loading="lazy">
+                <div class="overlay">
+                    <span class="project-title">Elena — CEES</span>
+                    <span class="project-category">Testimonial</span>
+                    <span class="play-icon">▶</span>
+                </div>
+            </div>
+
+            <a href="#" class="project-card fade-in stagger-3">
                 <img src="https://images.unsplash.com/photo-1518676590747-1e3dcf5a4e06?w=800&q=80"
                      alt="Waves of Time — Documental" loading="lazy">
                 <div class="overlay">
@@ -1147,22 +1167,27 @@
         const closeBtn = modal.querySelector('.modal-close');
         let currentVimeoId = null;
 
-        function openModal(vimeoId) {
-            if (currentVimeoId === vimeoId && modal.classList.contains('open')) return;
-            currentVimeoId = vimeoId;
-            // Hashes refresh periodically from Vimeo — updated Nov 2026
-            const hashes = {
-                '1242974568': 'e5c946c792',
-                '1009328137': 'd60497e27a',
-                '1009326032': '537805459b',
-                '1242962369': 'c9703ba0a1',
-                '1243294572': '2f7ec20377',
-                '1243318690': '1ec6140a9f'
-            };
-            const hash = hashes[vimeoId] || '';
-            const src = hash
-                ? `https://player.vimeo.com/video/${vimeoId}?h=${hash}&autoplay=1&title=0&byline=0&portrait=0`
-                : `https://player.vimeo.com/video/${vimeoId}?autoplay=1&title=0&byline=0&portrait=0`;
+        function openModal(id, platform) {
+            if (currentVimeoId === id && modal.classList.contains('open') && platform === 'vimeo') return;
+            currentVimeoId = id;
+            let src;
+            if (platform === 'youtube') {
+                src = `https://www.youtube.com/embed/${id}?autoplay=1&rel=0&modestbranding=1`;
+            } else {
+                // Vimeo — hash may refresh periodically
+                const hashes = {
+                    '1242974568': 'e5c946c792',
+                    '1009328137': 'd60497e27a',
+                    '1009326032': '537805459b',
+                    '1242962369': 'c9703ba0a1',
+                    '1243294572': '2f7ec20377',
+                    '1243318690': '1ec6140a9f'
+                };
+                const hash = hashes[id] || '';
+                src = hash
+                    ? `https://player.vimeo.com/video/${id}?h=${hash}&autoplay=1&title=0&byline=0&portrait=0`
+                    : `https://player.vimeo.com/video/${id}?autoplay=1&title=0&byline=0&portrait=0`;
+            }
             iframe.src = src;
             modal.classList.add('open');
             document.body.style.overflow = 'hidden';
@@ -1175,11 +1200,13 @@
             document.body.style.overflow = '';
         }
 
-        // Click on video cards
+        // Click on video cards (Vimeo + YouTube)
         document.querySelectorAll('.video-card').forEach(card => {
             card.addEventListener('click', () => {
                 const vimeoId = card.getAttribute('data-vimeo');
-                if (vimeoId) openModal(vimeoId);
+                const ytId = card.getAttribute('data-youtube');
+                if (vimeoId) openModal(vimeoId, 'vimeo');
+                else if (ytId) openModal(ytId, 'youtube');
             });
             card.addEventListener('keydown', (e) => {
                 if (e.key === 'Enter' || e.key === ' ') {
