@@ -663,22 +663,36 @@
             .hero {
                 padding-left: 24px;
                 padding-right: 24px;
-                padding-top: 110px;
-                padding-bottom: 50px;
+                padding-top: 100px;
+                padding-bottom: 40px;
             }
 
             .hero-content {
                 grid-template-columns: 1fr;
-                gap: 32px;
+                gap: 24px;
+            }
+
+            .hero-text h1 {
+                margin-bottom: 16px;
+                font-size: clamp(36px, 8vw, 52px);
+            }
+
+            .hero-text .subtitle {
+                font-size: 16px;
+                line-height: 1.5;
             }
 
             .hero-photo {
                 order: -1;
-                max-height: 300px;
+                max-height: 260px;
             }
 
             .section {
-                padding: 50px 24px;
+                padding: 40px 24px;
+            }
+
+            .section-header {
+                margin-bottom: 32px;
             }
 
             .projects-grid {
@@ -697,12 +711,45 @@
             }
 
             .footer {
-                padding: 60px 24px 40px;
+                padding: 50px 24px 40px;
             }
 
             .footer-contact {
                 grid-template-columns: 1fr;
                 gap: 32px;
+            }
+        }
+
+        /* ============================================
+           TOUCH DEVICES — always show overlay
+           ============================================ */
+        @media (hover: none) {
+            .project-card .overlay {
+                opacity: 0.75;
+                transition: none;
+            }
+
+            .project-card:hover .overlay {
+                opacity: 0.85;
+            }
+
+            .project-card .play-icon {
+                display: none;
+            }
+
+            #about .fade-in > p {
+                font-size: 16px;
+                line-height: 1.6;
+                margin-bottom: 16px;
+            }
+
+            #about {
+                padding-bottom: 32px;
+            }
+
+            #about > div {
+                grid-template-columns: 1fr !important;
+                gap: 24px !important;
             }
         }
     </style>
