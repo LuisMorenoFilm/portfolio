@@ -108,9 +108,9 @@
     var status = form.querySelector('.form-status');
     function mailtoFallback() {
       var get = function (id) { var el = document.getElementById(id); return el ? el.value.trim() : ''; };
-      var nombre = get('f-name'), email = get('f-email'), tipo = get('f-type'), msg = get('f-msg');
+      var nombre = get('f-name'), email = get('f-email'), tel = get('f-phone'), tipo = get('f-type'), msg = get('f-msg');
       var subject = 'Consulta web: ' + (tipo || 'Proyecto') + (nombre ? ' — ' + nombre : '');
-      var body = (msg || '') + '\n\n—\n' + nombre + (email ? ' · ' + email : '') + '\n' + (tipo ? 'Tipo: ' + tipo : '');
+      var body = (msg || '') + '\n\n—\n' + nombre + (email ? ' · ' + email : '') + (tel ? '\nTeléfono: ' + tel : '') + '\n' + (tipo ? 'Tipo: ' + tipo : '');
       window.location.href = 'mailto:' + (form.getAttribute('data-to') || '') +
         '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
     }
@@ -135,7 +135,7 @@
           subject: 'Web — ' + (tipo || 'Project') + (nombre ? ' — ' + nombre : ''),
           from_name: 'Web Luis Moreno Film',
           replyto: email,
-          name: nombre, email: email, type: tipo, message: msg, botcheck: ''
+          name: nombre, email: email, phone: form.elements['phone'].value.trim(), type: tipo, message: msg, botcheck: ''
         })
       }).then(function (r) { return r.json().then(function (j) { return { ok: r.ok, j: j }; }); })
         .then(function (res) {

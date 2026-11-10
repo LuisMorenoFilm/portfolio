@@ -756,6 +756,8 @@ def contact_page(lang, prefix, rel):
           <input id="f-name" name="name" autocomplete="name" required></div>
         <div class="field"><label for="f-email">{esc(f['email'])}</label>
           <input id="f-email" name="email" type="email" autocomplete="email" required></div>
+        <div class="field"><label for="f-phone">{esc(f['phone'])}</label>
+          <input id="f-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel"></div>
         <div class="field"><label for="f-type">{esc(f['type'])}</label>
           <select id="f-type" name="type">{opts}</select></div>
         <div class="field"><label for="f-msg">{esc(f['msg'])}</label>
