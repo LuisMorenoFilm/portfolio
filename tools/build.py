@@ -693,7 +693,7 @@ def about_page(lang, prefix, rel):
 <section class="section" style="padding-top:0">
   <div class="container editorial">
     <div class="reveal">
-      <div class="slider" data-interval="5000" role="group" aria-roledescription="carousel" aria-label="{esc('Fotografías de trabajo de Luis Moreno' if lang=='es' else 'Working photographs of Luis Moreno')}">
+      <div class="slider" data-interval="3500" role="group" aria-roledescription="carousel" aria-label="{esc('Fotografías de trabajo de Luis Moreno' if lang=='es' else 'Working photographs of Luis Moreno')}">
         <div class="slider-frame">{slides}</div>
         <div class="slider-dots">{dots}</div>
       </div>
