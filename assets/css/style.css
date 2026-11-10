@@ -17,8 +17,8 @@
   --font-display:'Cormorant Garamond', Georgia, serif;
   --font-body:'Inter', system-ui, -apple-system, sans-serif;
   --ease:cubic-bezier(.22,1,.36,1);
-  --pad:clamp(20px, 5vw, 64px);
-  --max:1360px;
+  --pad:clamp(20px, 4vw, 80px);
+  --max:1760px;
 }
 
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
