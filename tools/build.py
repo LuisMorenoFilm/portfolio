@@ -577,27 +577,22 @@ def other_page(lang, prefix, rel):
     rows = ''
     for c in CREDITS:
         if c.get('img'):
-            img = f"{prefix}assets/img/hermandad-640.jpg"
+            img = f"{prefix}assets/img/hermandad-1280.jpg"
             fallback = ''
-            w, h = 640, 360
-            alt = f"{c['t']} — Luis Moreno Film"
+            w, h = 1280, 720
         elif c['plat'] == 'yt':
             img = yt_thumb(c['yt'], 'hq')
             fallback = ''
             w, h = 480, 360
-            alt = f"{c['t']} — {c['role_es']}"
         else:
-            img = f"https://i.vimeocdn.com/video/{c['thumb']}-d_640x360"
+            img = f"https://i.vimeocdn.com/video/{c['thumb']}-d_1280x720"
             fallback = ''
-            w, h = 640, 360
-            alt = f"{c['t']} — {c['role_es']}"
-        plat_lbl = {'yt': 'YouTube', 'vimeo': 'Vimeo', 'fb': 'Facebook'}[c['plat']]
+            w, h = 1280, 720
         role = c['role_es'] if lang == 'es' else c['role_en']
         rows += f"""<a class="credit reveal" href="{c['url']}" target="_blank" rel="noopener">
-      <span class="th"><img src="{img}"{fallback} width="{w}" height="{h}" loading="lazy" decoding="async" alt="{esc(c['t'] + ' — ' + role)}"></span>
-      <span><span class="t">{esc(c['t'])}</span>
-        <span class="r">{esc(role)}</span></span>
-      <span class="go"><span class="plat">{plat_lbl}</span><span class="arr">↗</span></span>
+      <span class="th"><img src="{img}" width="{w}" height="{h}" loading="lazy" decoding="async" alt="{esc(c['t'] + ' — ' + role)}"></span>
+      <span class="t">{esc(c['t'])}</span>
+      <span class="r">{esc(role)}</span>
     </a>"""
     body = f"""
 <div class="container"><nav class="breadcrumb" aria-label="Breadcrumb">{bc_html(lang, prefix, [('Inicio' if lang=='es' else 'Home', prefix+'./'), (t['h'], None)])}</nav></div>

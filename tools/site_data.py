@@ -273,7 +273,7 @@ CREDITS = [
 T = {
  'es': dict(
   langlabel='ES', 
-  nav=[('Inicio',''),('Proyectos','proyectos/'),('Otros trabajos','otros-trabajos/'),('Servicios','servicios/'),('Sobre mí','sobre-mi/'),('Contacto','contacto/')],
+  nav=[('Inicio',''),('Portafolio','proyectos/'),('Otros trabajos','otros-trabajos/'),('Servicios','servicios/'),('Sobre mí','sobre-mi/'),('Contacto','contacto/')],
   nav_cta='HABLEMOS',
   hero=dict(l1='LUIS MORENO', l2='FILM',
             tag='STORYTELLING THROUGH CINEMA',
@@ -360,7 +360,7 @@ T = {
  ),
  'en': dict(
   langlabel='EN',
-  nav=[('Home','en/'),('Projects','en/projects/'),('Credits','en/other-work/'),('Services','en/services/'),('About','en/about/'),('Contact','en/contact/')],
+  nav=[('Home','en/'),('Portfolio','en/projects/'),('Credits','en/other-work/'),('Services','en/services/'),('About','en/about/'),('Contact','en/contact/')],
   nav_cta="LET'S TALK",
   hero=dict(l1='LUIS MORENO', l2='FILM',
             tag='STORYTELLING THROUGH CINEMA',
