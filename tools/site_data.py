@@ -329,7 +329,7 @@ T = {
                   ('Eventos','Aftermovies, teasers y piezas de promoción para eventos, salas y festivales.'),
                 ],
                 b_items=[
-                  ('Operador de cámara / segunda cámara','Manera de cámara en set, con experiencia en publicidad, videoclip y largometraje.'),
+                  ('Operador de cámara / segunda cámara','Manejo de cámara en set, con experiencia en publicidad, videoclip y largometraje.'),
                   ('Asistente de cámara','Soporte al operador: ópticas, seguimiento de foco, preparación de equipo.'),
                   ('Sonido directo','Grabación de diálogo y ambiente en entrevistas, eventos y rodajes de ficción.'),
                   ('Iluminación / gaffer','Montaje y operación de luz en interiores y exteriores.'),
