@@ -675,6 +675,12 @@ def services_page(lang, prefix, rel):
 def about_page(lang, prefix, rel):
     t = T[lang]['aboutpage']
     facts = ''.join(f'<div><dt>{esc(k)}</dt><dd>{esc(v)}</dd></div>' for k, v in t['facts'])
+    slides, dots = '', ''
+    for i, (src, alt) in enumerate(t['photos']):
+        eager = 'eager" fetchpriority="high' if i == 0 else 'lazy'
+        on = ' is-on' if i == 0 else ''
+        slides += f'''<img src="{prefix}{src}" width="1360" height="907" loading="{eager}" decoding="async" class="slide{on}" alt="{esc(alt)}">'''
+        dots += f'''<button type="button" class="dot{" is-on" if i==0 else ""}" data-slide="{i}" aria-label="{esc(("Ver fotografía " if lang=="es" else "View photo ") + str(i+1))}"><span class="sr-only">{i+1}</span></button>'''
     body = f"""
 <div class="container"><nav class="breadcrumb" aria-label="Breadcrumb">{bc_html(lang, prefix, [('Inicio' if lang=='es' else 'Home', prefix+'./'), (t['h'], None)])}</nav></div>
 <section class="section--tight" style="padding-bottom:clamp(36px,5vw,64px)">
@@ -687,12 +693,11 @@ def about_page(lang, prefix, rel):
 <section class="section" style="padding-top:0">
   <div class="container editorial">
     <div class="reveal">
-      <div class="media" style="aspect-ratio:16/10;background:var(--surface-2);display:flex;align-items:center;justify-content:center;border:1px solid var(--hairline-soft);border-radius:2px;overflow:hidden;position:relative">
-        <img src="{prefix}assets/img/eric-1600.jpg" width="1600" height="900" loading="lazy" decoding="async"
-             style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.85"
-             alt="Fotograma de la pedida de mano de Eric y Cristina en el Algarve — dirección de Luis Moreno Film">
+      <div class="slider" data-interval="5000" role="group" aria-roledescription="carousel" aria-label="{esc('Fotografías de trabajo de Luis Moreno' if lang=='es' else 'Working photographs of Luis Moreno')}">
+        <div class="slider-frame">{slides}</div>
+        <div class="slider-dots">{dots}</div>
       </div>
-      <p style="font-size:12px;color:var(--text-3);margin-top:12px">{'Fotograma de trabajo propio. Retrato profesional disponible a petición.' if lang=='es' else 'Still from my own work. Professional portrait available on request.'}</p>
+      <p style="font-size:12px;color:var(--text-3);margin-top:12px">{'Fotografías de rodajes y montajes propios.' if lang=='es' else 'Photographs from my own shoots and setups.'}</p>
     </div>
     <div class="reveal d1">
       {''.join(f'<p style="color:var(--text-2);font-size:16.5px">{esc(par)}</p>' for par in t['p'])}
