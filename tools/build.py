@@ -192,12 +192,12 @@ def footer(lang, prefix):
         <a class="logo" href="{prefix}./">LUIS MORENO <em>FILM</em></a>
         <p>{esc(t['tagline'])}</p>
       </div>
-      <div class="footer-col"><h4>{esc(t['nav'])}</h4>{nav_html}</div>
-      <div class="footer-col"><h4>{esc(t['contact'])}</h4>
+      <div class="footer-col"><h2>{esc(t['nav'])}</h2>{nav_html}</div>
+      <div class="footer-col"><h2>{esc(t['contact'])}</h2>
         <a href="mailto:{S['email']}">{esc(S['email'])}</a>
         <a href="tel:{S['phone']}">{esc(S['phone_label'])}</a>
       </div>
-      <div class="footer-col"><h4>{esc(t['follow'])}</h4>
+      <div class="footer-col"><h2>{esc(t['follow'])}</h2>
         <a href="{S['instagram']}" rel="noopener">Instagram ↗</a>
         <a href="{S['vimeo']}" rel="noopener">Vimeo ↗</a>
       </div>
@@ -511,7 +511,7 @@ def detail_page(lang, p, prefix, rel):
     </div>
     <p class="lead detail-lead reveal d1">{esc(d['blurb'])}</p>
     <div class="player reveal d2" data-video-src="{player_src}" data-video-title="{esc(p['video_name'])}">
-      <img src="{thumb(p,'-d_1280x720')}" onerror="{THUMB_FALLBACK}" width="1280" height="720" loading="lazy" decoding="async"
+      <img src="{thumb(p,'-d_1280x720')}" onerror="{THUMB_FALLBACK}" width="1280" height="720" loading="eager" fetchpriority="high" decoding="async"
            alt="Miniatura de {esc(p['title'])}, {esc(d['cat_label'])} de Luis Moreno Film">
       <button class="launch" type="button" aria-label="{('Reproducir' if lang=='es' else 'Play')} {esc(p['title'])}">
         <span class="play"><svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
@@ -577,14 +577,14 @@ def other_page(lang, prefix, rel):
     rows = ''
     for c in CREDITS:
         if c.get('img'):
-            img = f"{prefix}{c['img']}"
+            img = f"{prefix}assets/img/hermandad-640.jpg"
             fallback = ''
-            w, h = 1803, 1014
+            w, h = 640, 360
             alt = f"{c['t']} — Luis Moreno Film"
         elif c['plat'] == 'yt':
-            img = yt_thumb(c['yt'])
-            fallback = f" onerror=\"this.onerror=null;this.src='{yt_thumb(c['yt'],'hq')}'\""
-            w, h = 1280, 720
+            img = yt_thumb(c['yt'], 'hq')
+            fallback = ''
+            w, h = 480, 360
             alt = f"{c['t']} — {c['role_es']}"
         else:
             img = f"https://i.vimeocdn.com/video/{c['thumb']}-d_640x360"
