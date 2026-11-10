@@ -83,9 +83,11 @@
       <p style="margin-top:26px;font-size:13px;color:var(--text-3)">España y Algarve (Portugal). Proyectos en toda Europa.</p>
     </div>
     <div class="form reveal d1">
-      <h2 class="h-card" style="margin-bottom:8px">O redáctalo aquí</h2>
-      <p style="font-size:13.5px;color:var(--text-3);margin-bottom:26px">Rellena y abre tu app de correo con el mensaje listo. Este sitio es estático: no envía datos por sí mismo.</p>
-      <form id="mailtoForm" data-to="luismorenofilm@proton.me">
+      <h2 class="h-card" style="margin-bottom:8px">O escríbeme aquí</h2>
+      <p style="font-size:13.5px;color:var(--text-3);margin-bottom:26px">Rellena y pulsa enviar: el mensaje me llega directamente al correo.</p>
+      <form id="mailtoForm" data-to="luismorenofilm@proton.me" data-key="" novalidate>
+        <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <input type="hidden" name="subject" value="">
         <div class="field"><label for="f-name">Nombre</label>
           <input id="f-name" name="name" autocomplete="name" required></div>
         <div class="field"><label for="f-email">Tu correo</label>
@@ -94,8 +96,9 @@
           <select id="f-type" name="type"><option value="Boda o celebración">Boda o celebración</option><option value="Publicidad / marca">Publicidad / marca</option><option value="Vídeo corporativo">Vídeo corporativo</option><option value="Videoclip">Videoclip</option><option value="Evento">Evento</option><option value="Producción de terceros (equipo técnico)">Producción de terceros (equipo técnico)</option><option value="Otro">Otro</option></select></div>
         <div class="field"><label for="f-msg">Cuéntame el proyecto</label>
           <textarea id="f-msg" name="message" required></textarea></div>
-        <button class="btn btn--solid" type="submit">REDACCTAR CORREO <span class="arr">→</span></button>
-        <p class="note">Se abrirá tu aplicación de correo con el mensaje preparado.</p>
+        <p class="form-status" role="status" aria-live="polite" data-ok="Mensaje enviado. Gracias — te responderé en menos de 24 h." data-err="No se pudo enviar. inténtalo de nuevo o escribe a luismorenofilm@proton.me" data-lang="es"></p>
+        <button class="btn btn--solid" type="submit">ENVIAR MENSAJE <span class="arr">→</span></button>
+        <p class="note">También puedes escribir directamente a luismorenofilm@proton.me.</p>
       </form>
     </div>
   </div>

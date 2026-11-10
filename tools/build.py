@@ -749,7 +749,9 @@ def contact_page(lang, prefix, rel):
     <div class="form reveal d1">
       <h2 class="h-card" style="margin-bottom:8px">{esc(f['title'])}</h2>
       <p style="font-size:13.5px;color:var(--text-3);margin-bottom:26px">{esc(f['sub'])}</p>
-      <form id="mailtoForm" data-to="{S['email']}">
+      <form id="mailtoForm" data-to="{S['email']}" data-key="{S['web3forms_key']}" novalidate>
+        <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <input type="hidden" name="subject" value="">
         <div class="field"><label for="f-name">{esc(f['name'])}</label>
           <input id="f-name" name="name" autocomplete="name" required></div>
         <div class="field"><label for="f-email">{esc(f['email'])}</label>
@@ -758,6 +760,7 @@ def contact_page(lang, prefix, rel):
           <select id="f-type" name="type">{opts}</select></div>
         <div class="field"><label for="f-msg">{esc(f['msg'])}</label>
           <textarea id="f-msg" name="message" required></textarea></div>
+        <p class="form-status" role="status" aria-live="polite" data-ok="{esc(f['ok'])}" data-err="{esc(f['err'])}" data-lang="{lang}"></p>
         <button class="btn btn--solid" type="submit">{esc(f['submit'])} <span class="arr">→</span></button>
         <p class="note">{esc(f['note'])}</p>
       </form>

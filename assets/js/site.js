@@ -102,22 +102,57 @@
     });
   });
 
-  /* Formulario mailto (sitio estático: abre el cliente de correo) */
+  /* Formulario de contacto: envio real via Web3Forms; sin clave, fallback mailto */
   var form = document.getElementById('mailtoForm');
   if (form) {
-    form.addEventListener('submit', function (e) {
-      e.preventDefault();
-      var get = function (id) {
-        var el = document.getElementById(id);
-        return el ? el.value.trim() : '';
-      };
+    var status = form.querySelector('.form-status');
+    function mailtoFallback() {
+      var get = function (id) { var el = document.getElementById(id); return el ? el.value.trim() : ''; };
       var nombre = get('f-name'), email = get('f-email'), tipo = get('f-type'), msg = get('f-msg');
       var subject = 'Consulta web: ' + (tipo || 'Proyecto') + (nombre ? ' — ' + nombre : '');
       var body = (msg || '') + '\n\n—\n' + nombre + (email ? ' · ' + email : '') + '\n' + (tipo ? 'Tipo: ' + tipo : '');
-      var to = form.getAttribute('data-to') || '';
-      window.location.href = 'mailto:' + to +
-        '?subject=' + encodeURIComponent(subject) +
-        '&body=' + encodeURIComponent(body);
+      window.location.href = 'mailto:' + (form.getAttribute('data-to') || '') +
+        '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+    }
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      if (!form.checkValidity()) { form.reportValidity(); return; }
+      var key = (form.getAttribute('data-key') || '').trim();
+      var btn = form.querySelector('button[type=submit]');
+      var nombre = form.elements['name'].value.trim();
+      var email = form.elements['email'].value.trim();
+      var tipo = form.elements['type'].value;
+      var msg = form.elements['message'].value.trim();
+      if (!key) { mailtoFallback(); return; }
+      status.className = 'form-status';
+      status.textContent = status.dataset.lang === 'es' ? 'Enviando…' : 'Sending…';
+      btn.disabled = true;
+      fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({
+          access_key: key,
+          subject: 'Web — ' + (tipo || 'Project') + (nombre ? ' — ' + nombre : ''),
+          from_name: 'Web Luis Moreno Film',
+          replyto: email,
+          name: nombre, email: email, type: tipo, message: msg, botcheck: ''
+        })
+      }).then(function (r) { return r.json().then(function (j) { return { ok: r.ok, j: j }; }); })
+        .then(function (res) {
+          if (res.ok && res.j.success) {
+            status.textContent = status.dataset.ok;
+            status.className = 'form-status is-ok';
+            form.reset();
+          } else {
+            status.textContent = status.dataset.err;
+            status.className = 'form-status is-err';
+            btn.disabled = false;
+          }
+        }).catch(function () {
+          status.textContent = status.dataset.err;
+          status.className = 'form-status is-err';
+          btn.disabled = false;
+        });
     });
   }
 

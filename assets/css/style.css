@@ -381,6 +381,11 @@ body.menu-locked{overflow:hidden}
 .form input:focus,.form select:focus,.form textarea:focus{outline:none;border-bottom-color:var(--accent)}
 .form textarea{min-height:120px;resize:vertical}
 .form .note{font-size:12.5px;color:var(--text-3);margin-top:14px}
+.form .hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+.form-status{min-height:0;margin:0 0 14px;font-size:13.5px}
+.form-status:empty{display:none}
+.form-status.is-ok{color:#9fd6a8}
+.form-status.is-err{color:#e5a1a1}
 
 /* ---------- CTA band ---------- */
 .cta-band{text-align:center;padding-block:clamp(90px,14vw,180px)}

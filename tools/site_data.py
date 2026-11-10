@@ -7,6 +7,7 @@ TODO el HTML se genera desde aquí con tools/build.py — no editar el HTML a ma
 """
 
 SITE = {
+    'web3forms_key': '',  # pegar aqui la access key de web3forms.com
     'brand': 'Luis Moreno Film',
     'base': 'https://luismorenofilm.github.io/portfolio',  # cambiar a https://luismorenofilm.es al migrar (y regenerar)
     'email': 'luismorenofilm@proton.me',
@@ -357,10 +358,11 @@ T = {
                email_t='Correo', email_d='La vía más fiable. Respuesta personal.',
                phone_t='Teléfono', phone_d='Lunes a viernes, horario europeo.',
                ig_t='Instagram', ig_d='Trabajo diario y piezas recientes.',
-               form=dict(title='O redáctalo aquí', sub='Rellena y abre tu app de correo con el mensaje listo. Este sitio es estático: no envía datos por sí mismo.',
+               form=dict(title='O escríbeme aquí', sub='Rellena y pulsa enviar: el mensaje me llega directamente al correo.',
                          name='Nombre', email='Tu correo', type='Tipo de proyecto',
                          types=['Boda o celebración','Publicidad / marca','Vídeo corporativo','Videoclip','Evento','Producción de terceros (equipo técnico)','Otro'],
-                         msg='Cuéntame el proyecto', submit='REDACCTAR CORREO', note='Se abrirá tu aplicación de correo con el mensaje preparado.')),
+                         msg='Cuéntame el proyecto', submit='ENVIAR MENSAJE', note='También puedes escribir directamente a luismorenofilm@proton.me.',
+                         ok='Mensaje enviado. Gracias — te responderé en menos de 24 h.', err='No se pudo enviar. inténtalo de nuevo o escribe a luismorenofilm@proton.me')),
   proj=dict(breadcrumb='Proyectos', services='Servicios', loc='Localización', next='Siguiente', prev='Anterior',
             back='Volver a proyectos', cta_h='¿Un proyecto así?', cta_p='Cuéntame el tuyo: fechas, lugar y lo que quieres que se sienta al verlo.',
             own='Producción propia', spec='Pieza spec'),
@@ -453,10 +455,11 @@ T = {
                email_t='Email', email_d='The most reliable channel. Personal reply.',
                phone_t='Phone', phone_d='Monday to Friday, European hours.',
                ig_t='Instagram', ig_d='Daily work and recent pieces.',
-               form=dict(title='Or draft it here', sub='Fill this in and it opens your mail app with the message ready. This site is static: it does not send data by itself.',
+               form=dict(title='Or write to me here', sub='Fill this in and hit send — the message lands straight in my inbox.',
                          name='Name', email='Your email', type='Project type',
                          types=['Wedding or celebration','Advertising / brand','Corporate video','Music video','Event','Third-party production (technical crew)','Other'],
-                         msg='Tell me about the project', submit='DRAFT EMAIL', note='Your email app will open with the message prepared.')),
+                         msg='Tell me about the project', submit='SEND MESSAGE', note='You can also write directly to luismorenofilm@proton.me.',
+                         ok='Message sent. Thank you — I will reply within 24 hours.', err='Could not send. Please try again or write to luismorenofilm@proton.me')),
   proj=dict(breadcrumb='Projects', services='Services', loc='Location', next='Next', prev='Previous',
             back='Back to projects', cta_h='A project like this?', cta_p='Tell me about yours: dates, place, and what you want people to feel when they watch it.',
             own='Original production', spec='Spec piece'),
