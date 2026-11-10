@@ -7,7 +7,7 @@ TODO el HTML se genera desde aquí con tools/build.py — no editar el HTML a ma
 """
 
 SITE = {
-    'web3forms_key': '',  # pegar aqui la access key de web3forms.com
+    'web3forms_key': 'e67f4b29-e088-4887-bc53-9400f2b5d408',  # access key de web3forms.com (formulario Contacto)
     'brand': 'Luis Moreno Film',
     'base': 'https://luismorenofilm.github.io/portfolio',  # cambiar a https://luismorenofilm.es al migrar (y regenerar)
     'email': 'luismorenofilm@proton.me',
