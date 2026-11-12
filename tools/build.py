@@ -309,9 +309,9 @@ def video_ld(p, lang):
 # ---------------------------------------------------------------- PÁGINAS
 def home(lang, prefix, rel):
     t = T[lang]
-    hero_img = prefix + 'assets/img/hero'
-    srcset_webp = ', '.join(f'{hero_img}-{w}.webp {w}w' for w in (768, 1024, 1440, 1920, 2560))
-    srcset_jpg = ', '.join(f'{hero_img}-{w}.jpg {w}w' for w in (960, 1440, 2560))
+    hero_img = prefix + 'assets/img/hero-poster'
+    srcset_webp = ', '.join(f'{hero_img}-{w}.webp {w}w' for w in (960, 1440, 1920))
+    srcset_jpg = f'{hero_img}-1440.jpg'
     featured = FEATURED[:6]
     fcards = '\n'.join(card_html(p, lang, prefix, ('d1' if i % 2 else '')) for i, p in enumerate(featured))
     cat_rows = ''
@@ -333,9 +333,12 @@ def home(lang, prefix, rel):
     <picture>
       <source type="image/webp" srcset="{srcset_webp}" sizes="100vw">
       <img src="{hero_img}-1440.jpg" srcset="{srcset_jpg}" sizes="100vw"
-           width="2560" height="1440" fetchpriority="high" decoding="async"
-           alt="Fotograma de una película de boda de Luis Moreno Film — ceremonia frente al mar en el Algarve">
+           width="1920" height="1080" fetchpriority="high" decoding="async"
+           alt="Fotograma del reel de Luis Moreno Film — plano aéreo de un puente al atardecer">
     </picture>
+    <video id="heroVideo" class="hero-video" muted loop playsinline preload="none" tabindex="-1" disablepictureinpicture>
+      <source src="{prefix}assets/video/hero-1080.mp4" type="video/mp4">
+    </video>
   </div>
   <div class="container hero-inner">
     <h1 class="title-xl">{esc(t['hero']['l1'])} <span class="l2">{esc(t['hero']['l2'])}</span></h1>

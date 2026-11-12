@@ -102,6 +102,25 @@
     });
   });
 
+  /* Hero: video de fondo solo en escritorio, sin reduccion de movimiento ni ahorrador de datos.
+     Se inicia tras el evento load para no competir con la imagen LCP del poster */
+  var heroV = document.getElementById('heroVideo');
+  if (heroV) {
+    var startHero = function () {
+      var conn = navigator.connection || {};
+      var allow = window.matchMedia('(min-width: 900px)').matches
+        && !window.matchMedia('(prefers-reduced-motion: reduce)').matches
+        && !conn.saveData;
+      if (!allow) return;
+      heroV.load();
+      var p = heroV.play();
+      if (p) p.then(function () { heroV.classList.add('is-on'); }).catch(function () {});
+      else heroV.classList.add('is-on');
+    };
+    if (document.readyState === 'complete') startHero();
+    else window.addEventListener('load', startHero, { once: true });
+  }
+
   /* Formulario de contacto: envio real via Web3Forms; sin clave, fallback mailto */
   var form = document.getElementById('mailtoForm');
   if (form) {
