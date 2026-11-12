@@ -108,8 +108,7 @@
   if (heroV) {
     var startHero = function () {
       var conn = navigator.connection || {};
-      var allow = window.matchMedia('(min-width: 900px)').matches
-        && !window.matchMedia('(prefers-reduced-motion: reduce)').matches
+      var allow = !window.matchMedia('(prefers-reduced-motion: reduce)').matches
         && !conn.saveData;
       if (!allow) return;
       heroV.load();

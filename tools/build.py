@@ -337,6 +337,7 @@ def home(lang, prefix, rel):
            alt="Fotograma del reel de Luis Moreno Film — plano aéreo de un puente al atardecer">
     </picture>
     <video id="heroVideo" class="hero-video" muted loop playsinline preload="none" tabindex="-1" disablepictureinpicture>
+      <source media="(max-width: 899px)" src="{prefix}assets/video/hero-720.mp4" type="video/mp4">
       <source src="{prefix}assets/video/hero-1080.mp4" type="video/mp4">
     </video>
   </div>
