@@ -268,6 +268,9 @@ CREDITS = [
          plat='yt', url='https://www.youtube.com/watch?v=M3YGpToUtSs', yt='M3YGpToUtSs'),
     dict(t='Ana de Caro — Voy a olvidarte', role_es='Asistente de Producción', role_en='Production Assistant',
          plat='yt', url='https://www.youtube.com/watch?v=SP9agveJEk0', yt='SP9agveJEk0'),
+    dict(t='VIDEOMAX — Documental 25 Aniversario Esperanza Coronada de Huelva', role_es='Operador de Cámara', role_en='Camera Operator',
+         plat='vimeo', url='https://vimeo.com/1246239875',
+         thumb='2225582406-f592ded024936ccbde5b6291ce98b241383ee0b1b2eb04fb5aac0a099cae1cb4'),
 ]
 
 # ------------------------------------------------------------------ COPY
