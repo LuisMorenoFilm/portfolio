@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://luismorenofilm.github.io/portfolio/sitemap.xml
