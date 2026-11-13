@@ -586,15 +586,16 @@ def other_page(lang, prefix, rel):
             w, h = 1280, 720
         elif c['plat'] == 'yt':
             img = yt_thumb(c['yt'], 'hq')
-            fallback = ''
+            fallback = "this.onerror=null;this.src=this.src.replace('hqdefault','mqdefault')"
             w, h = 480, 360
         else:
             img = f"https://i.vimeocdn.com/video/{c['thumb']}-d_1280x720"
-            fallback = ''
+            fallback = THUMB_FALLBACK
             w, h = 1280, 720
         role = c['role_es'] if lang == 'es' else c['role_en']
+        onerr = f' onerror="{fallback}"' if fallback else ''
         rows += f"""<a class="credit reveal" href="{c['url']}" target="_blank" rel="noopener">
-      <span class="th"><img src="{img}" width="{w}" height="{h}" loading="lazy" decoding="async" alt="{esc(c['t'] + ' — ' + role)}"></span>
+      <span class="th"><img src="{img}"{onerr} width="{w}" height="{h}" loading="lazy" decoding="async" alt="{esc(c['t'] + ' — ' + role)}"></span>
       <span class="t">{esc(c['t'])}</span>
       <span class="r">{esc(role)}</span>
     </a>"""
