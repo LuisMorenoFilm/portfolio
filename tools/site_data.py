@@ -252,6 +252,8 @@ CREDITS = [
          plat='fb', url='https://www.facebook.com/reel/1440025423969060', img='assets/hermandad-montemayor.jpg'),
     dict(t='Manuel Muñoz & Gonzalo Alhambra — Ahora', role_es='Asistente de Producción', role_en='Production Assistant',
          plat='yt', url='https://www.youtube.com/watch?v=Mw4VOcPBCIQ', yt='Mw4VOcPBCIQ'),
+    dict(t='Fernando Caro — Y no me lo creo', role_es='Asistente de Producción', role_en='Production Assistant',
+         plat='yt', url='https://www.youtube.com/watch?v=kkY3x2GuzLk', yt='kkY3x2GuzLk'),
     dict(t='Fernando Caro y Dani DUtrera — Llámame', role_es='Asistente de Producción', role_en='Production Assistant',
          plat='yt', url='https://www.youtube.com/watch?v=mmhzmFTw80o', yt='mmhzmFTw80o'),
     dict(t='Soni López — USTÉ', role_es='Gaffer', role_en='Gaffer',
