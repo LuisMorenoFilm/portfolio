@@ -232,7 +232,7 @@ CREDITS = [
          thumb='2059490775-018a6086fe56ffe7378494ab0302e0bc27f38735225baf0ddf28423031c963f0'),
     dict(t='Davidoff — Summer Season', role_es='Gaffer y Sonidista', role_en='Gaffer & Sound Recordist',
          plat='vimeo', url='https://vimeo.com/1131710682',
-         thumb='2075724810-83bc88ebc1781dd3991f343338aa6d85adc4d4ed4a069cba1095dfda7'),
+         thumb='2075724810-83bc88ebc1781dd3991f343338aa6d85adc4d4ed4a069cba0386cba1095dfda7'),
     dict(t='Giahsa — Orgánica y Marrón (campaña)', role_es='Gaffer', role_en='Gaffer',
          plat='yt', url='https://www.youtube.com/watch?v=7aUgdQxK8ZA', yt='7aUgdQxK8ZA'),
     dict(t='Argentina — ODIAME (Rumba, Live)', role_es='Operador de Cámara', role_en='Camera Operator',
